@@ -8,7 +8,7 @@ import { Pokemon } from '../interfaces/pokemon.interface';
 })
 export class FavoritosService {
   private http = inject(HttpClient);
-  private apiUrl = 'https://clase11-backend.onrender.com/favoritos';
+ private apiUrl = 'https://clase11-backend-bpfe.onrender.com/favoritos';
 
   getFavoritos(): Observable<Pokemon[]> {
     return this.http.get<Pokemon[]>(this.apiUrl);
