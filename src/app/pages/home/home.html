@@ -1,43 +1,31 @@
 <h1>Pokédex</h1>
 
 <div>
-
   <input
     [(ngModel)]="busqueda"
     placeholder="Escribe un pokémon"
     (keyup.enter)="buscar()">
   <button (click)="buscar()">Buscar</button>
-
 </div>
 
 <p *ngIf="cargando">Buscando...</p>
+<p *ngIf="error" style="color: red;">{{ error }}</p>
 
-<p *ngIf="error" style="color: red;">
-  {{ error }}
-</p>
-
-<!-- Componente hijo -->
-<!-- Recibe el pokemon y emite evento para favoritos -->
 <app-pokemon-card
   *ngIf="pokemon"
   [pokemon]="pokemon"
   (aggFavorito)="onAgregarFavorito($event)">
 </app-pokemon-card>
 
-<!-- Solo aparece si hay favoritos -->
 <div *ngIf="favoritos.length > 0">
-
   <h2>Favoritos</h2>
-
-  <!-- Recorre el arreglo favoritos -->
   <div *ngFor="let f of favoritos">
-
     <img
       [src]="f.sprites.front_default"
       [alt]="f.name"
       style="width: 60px;">
-
     <span>{{ f.name }}</span>
-
+    <button (click)="verDetalle(f.name)">Ver detalle →</button>
+    <button (click)="eliminarFavorito(f.id)">✕</button>
   </div>
 </div>

@@ -1,0 +1,19 @@
+<div class="card"  *ngIf="pokemon">
+  <span class="id">#{{ pokemon.id }}</span>
+  <h2>{{ pokemon.name }}</h2>
+  <img
+    [src]="pokemon.sprites.front_default"
+    [alt]="pokemon.name">
+  <div class="stats">
+    <p>Peso: {{ pokemon.weight / 10 }} kg</p>
+    <p>Altura: {{ pokemon.height / 10 }} m</p>
+    <p>Experiencia: {{ pokemon.base_experience }} XP</p>
+  </div>
+  <div class="types">
+    <span *ngFor="let t of pokemon.types">
+      {{ t.type.name }}
+    </span>
+  </div>
+  <button (click)="onFavorito()">Agregar a favoritos</button>
+
+</div>

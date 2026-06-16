@@ -1,0 +1,22 @@
+<button (click)="volver()">← Volver</button>
+
+<p *ngIf="cargando">Cargando...</p>
+<p *ngIf="error" style="color: red;">{{ error }}</p>
+
+<div *ngIf="pokemon">
+  <span>#{{ pokemon.id }}</span>
+  <h1>{{ pokemon.name }}</h1>
+  <img
+    [src]="pokemon.sprites.front_default"
+    [alt]="pokemon.name">
+
+  <h3>Tipos</h3>
+  <span *ngFor="let t of pokemon.types">
+    {{ t.type.name }}
+  </span>
+
+  <h3>Stats</h3>
+  <p>Peso: {{ pokemon.weight / 10 }} kg</p>
+  <p>Altura: {{ pokemon.height / 10 }} m</p>
+  <p>Experiencia base: {{ pokemon.base_experience }} XP</p>
+</div>
